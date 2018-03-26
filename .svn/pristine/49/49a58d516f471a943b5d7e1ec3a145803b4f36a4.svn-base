@@ -1,0 +1,98 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+
+use App\User;
+use App\Announcement;
+use App\Faq;
+use App\Assign;
+use App\Logbook;
+
+class CoordinatorController extends Controller
+{
+    //
+    public function __construct(){
+    	$this->middleware('auth');
+    }
+    
+    public function index(){
+
+        $announcements = Announcement::orderByDesc("id")->take(5)->get();
+        $faqs = Faq::all();
+    	return view('coordinator.index')
+            ->with('announcements', $announcements)
+            ->with('faqs', $faqs);
+    }
+
+    /////////////////////
+    ////// PROFILE  /////
+    /////////////////////
+    public function profile_edit(){
+        $userinfo = User::find(Auth::user()->id);
+        return view('coordinator.profile_edit')
+            ->with('userinfo', $userinfo);
+    }
+    //END PROFILE
+
+    /////////////////////
+    /// ANNOUNCEMENT ////
+    /////////////////////
+    public function announcements(){
+    	//baca data announcements dari database
+    	$announcements = Announcement::orderByDesc("id")->get();
+    	return view('coordinator.announcements')
+    		->with('announcements', $announcements);
+    }
+
+    public function add_announcements(){
+    	return view('coordinator.announcements_add');
+    }
+
+    public function edit_announcements(Request $request){
+
+        $announcements = Announcement::find($request->id);
+
+        return view('coordinator.announcements_add')
+            ->with('announcements', $announcements);
+    }
+    //END ANNOUNCEMENT
+
+    /////////////
+    /// FAQ  ////
+    /////////////
+    public function faqs(){
+        //baca data faqs dari database
+        $faqs = Faq::orderByDesc("id")->get();
+        return view('coordinator.faqs')
+            ->with('faqs', $faqs);
+    }
+
+    public function add_faqs(){
+        return view('coordinator.faqs_add');
+    }
+
+    public function edit_faqs(Request $request){
+
+        $faqs = Faq::find($request->id);
+
+        return view('coordinator.faqs_add')
+            ->with('faqs', $faqs);
+    }
+    //END FAQ
+
+    
+	
+    ///////////////
+    /// LOGBOOK ////
+    ///////////////
+    public function logbook(){
+        //baca data logbooks dari database
+        $logbooks = Logbook::all();
+        return view('coordinator.logbook')
+            ->with('logbooks', $logbooks);
+    }
+    //END LOGBOOK
+}

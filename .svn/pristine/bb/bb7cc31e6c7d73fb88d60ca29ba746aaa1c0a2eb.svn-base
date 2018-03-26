@@ -1,0 +1,26 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+use App\Announcements;
+
+class GeneralController extends Controller
+{
+    //
+    //
+    public function __construct(){
+    	$this->middleware('auth');
+    }
+
+    public function announcements(){
+    	//baca data announcements dari database
+    	$announcements = Announcements::all();
+    	return view('/coordinator/announcements')
+    		->with('announcements', $announcements);
+    }
+
+    public function announcements_add(){
+    	return view('/coordinator/announcements_add');
+    }
+}

@@ -1,0 +1,53 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+
+use App\User;
+
+class ProfileController extends Controller
+{
+    //
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
+    public function view(){
+
+    	$userinfo = User::find(Auth::user()->id);
+    	return view(Auth::user()->roleName().'.profile')
+    		->with('userinfo', $userinfo);
+    }
+
+    public function edit(Request $request){
+    	$userinfo = User::find(Auth::user()->id);
+        $userinfo->name = $request->name;
+        $userinfo->matricID = $request->matricID;
+        $userinfo->address = $request->address;
+        $userinfo->tel = $request->tel;
+        $userinfo->email = $request->email;
+        $userinfo->position = $request->position;
+        $userinfo->companyName = $request->companyName;
+        $userinfo->companyAdd = $request->companyAdd;
+        $userinfo->companyTel = $request->companyTel;
+        $userinfo->companySV = $request->companySV;
+        $userinfo->emailSV = $request->emailSV;
+        if($request->has('password') && $request->password != ""){
+            $userinfo->password = bcrypt($request->password);
+        }
+        
+        $userinfo->save();
+
+        return redirect('/profile')
+            ->with('success', 'Succesfully update your profile!')
+            ->with('userinfo', $userinfo);
+    }
+}

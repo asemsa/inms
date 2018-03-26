@@ -1,0 +1,37 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+
+use App\User;
+use App\Announcement;
+use App\Faq;
+use App\Logbook;
+use App\Message;
+
+class StudentController extends Controller
+{
+    //
+    public function __construct(){
+    	$this->middleware('auth');
+    }
+    
+    /////////////////////
+    ////// LOGBOOK  /////
+    /////////////////////
+    public function logbook_add(){
+        return view('student.logbook_add');
+    }
+
+    public function logbook_edit(Request $request){
+
+        $logbook = Logbook::find($request->id);
+
+        return view('student.logbook_add')
+            ->with('logbook', $logbook);
+    }
+    //END LOGBOOK
+
+}
