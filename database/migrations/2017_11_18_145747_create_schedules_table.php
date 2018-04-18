@@ -13,12 +13,12 @@ class CreateSchedulesTable extends Migration
      */
     public function up()
     {
-        Schema::create("schedules", function (Blueprint $table) {
-            $table->increments("id")->unique();
-            $table->integer("facultySVID");
-            $table->dateTime("date");
-            $table->string("location");
-            $table->tinyInteger("statusSchedule")->default("1");
+        Schema::create('schedules', function (Blueprint $table) {
+            $table->increments('id')->unique();
+            $table->integer('facultySVID');
+            $table->dateTime('date');
+            $table->string('location');
+            $table->tinyInteger('statusSchedule')->default('1');
             $table->timestamps();
         });
     }
@@ -30,6 +30,6 @@ class CreateSchedulesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists("schedules");
+        Schema::dropIfExists('schedules');
     }
 }

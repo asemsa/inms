@@ -13,10 +13,10 @@ class DropColumnUsersTable extends Migration
      */
     public function up()
     {
-        Schema::table("users", function (Blueprint $table) {
+        Schema::table('users', function (Blueprint $table) {
             //
-                $table->dropColumn("companySV");
-                $table->dropColumn("emailSV");
+                $table->dropColumn('companySV');
+                $table->dropColumn('emailSV');
         });
     }
 
@@ -27,10 +27,10 @@ class DropColumnUsersTable extends Migration
      */
     public function down()
     {
-        Schema::table("users", function (Blueprint $table) {
+        Schema::table('users', function (Blueprint $table) {
             //
-            $table->string("companySV")->nullable(true);
-            $table->string("emailSV")->nullable(true);
+            $table->string('companySV')->nullable(true);
+            $table->string('emailSV')->nullable(true);
         });
     }
 }

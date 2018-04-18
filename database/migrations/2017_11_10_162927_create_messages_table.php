@@ -13,13 +13,13 @@ class CreateMessagesTable extends Migration
      */
     public function up()
     {
-        Schema::create("messages", function (Blueprint $table) {
-            $table->increments("id")->unique();
-            $table->tinyInteger("read")->default("1");
-            $table->integer("senderID");
-            $table->integer("receiverID");
-            $table->string("message");
-            $table->dateTime("messageDateTime");
+        Schema::create('messages', function (Blueprint $table) {
+            $table->increments('id')->unique();
+            $table->tinyInteger('read')->default('1');
+            $table->integer('senderID');
+            $table->integer('receiverID');
+            $table->string('message');
+            $table->dateTime('messageDateTime');
             $table->timestamps();
         });
     }
@@ -31,6 +31,6 @@ class CreateMessagesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists("messages");
+        Schema::dropIfExists('messages');
     }
 }

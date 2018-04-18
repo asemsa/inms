@@ -13,15 +13,15 @@ class CreateEvaluationsTable extends Migration
      */
     public function up()
     {
-        Schema::create("evaluations", function (Blueprint $table) {
-            $table->increments("id")->unique();
-            $table->integer("studentID");
-            $table->float("markLogbook", 11, 2)->nullable(true);
-            $table->string("remarksLogbook")->nullable(true);
-            $table->float("markPresent", 11, 2)->nullable(true);
-            $table->string("remarksPresent")->nullable(true);
-            $table->float("markInternship", 11, 2)->nullable(true);
-            $table->string("remarksInternship")->nullable(true);
+        Schema::create('evaluations', function (Blueprint $table) {
+            $table->increments('id')->unique();
+            $table->integer('studentID');
+            $table->float('markLogbook', 11, 2)->nullable(true);
+            $table->string('remarksLogbook')->nullable(true);
+            $table->float('markPresent', 11, 2)->nullable(true);
+            $table->string('remarksPresent')->nullable(true);
+            $table->float('markInternship', 11, 2)->nullable(true);
+            $table->string('remarksInternship')->nullable(true);
             $table->timestamps();
         });
     }
@@ -33,6 +33,6 @@ class CreateEvaluationsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists("evaluations");
+        Schema::dropIfExists('evaluations');
     }
 }

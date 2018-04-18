@@ -13,10 +13,10 @@ class AddIndustrialSVIDColumnAssignTable extends Migration
      */
     public function up()
     {
-        Schema::table("assigns", function (Blueprint $table) {
+        Schema::table('assigns', function (Blueprint $table) {
             //
-            $table->integer("industrialSVID")->nullable(true)->after("facultySVID");
-            DB::statement("ALTER TABLE `assigns` MODIFY `facultySVID` INTEGER NULL;");
+            $table->integer('industrialSVID')->nullable(true)->after('facultySVID');
+            DB::statement('ALTER TABLE `assigns` MODIFY `facultySVID` INTEGER NULL;');
         });
     }
 
@@ -27,10 +27,10 @@ class AddIndustrialSVIDColumnAssignTable extends Migration
      */
     public function down()
     {
-        Schema::table("assigns", function (Blueprint $table) {
+        Schema::table('assigns', function (Blueprint $table) {
             //
-            $table->dropColumn("industrialSVID");
-            DB::statement("ALTER TABLE `assigns` MODIFY `facultySVID` INTEGER NOT NULL;");
+            $table->dropColumn('industrialSVID');
+            DB::statement('ALTER TABLE `assigns` MODIFY `facultySVID` INTEGER NOT NULL;');
         });
     }
 }
