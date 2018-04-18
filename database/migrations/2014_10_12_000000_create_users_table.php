@@ -13,21 +13,21 @@ class CreateUsersTable extends Migration
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
-            $table->increments('id')->unique();
-            $table->string('name')->nullable(true);
-            $table->string('address')->nullable(true);
-            $table->string('tel')->nullable(true);
-            $table->string('email');
-            $table->string('position');
-            $table->string('matricID')->nullable(true);
-            $table->string('companyName')->nullable(true);
-            $table->string('companyAdd')->nullable(true);
-            $table->string('companyTel')->nullable(true);
-            $table->string('companySV')->nullable(true);
-            $table->string('emailSV')->nullable(true);
-            $table->string('image')->nullable(true);
-            $table->string('password');
+        Schema::create("users", function (Blueprint $table) {
+            $table->increments("id")->unique();
+            $table->string("name")->nullable(true);
+            $table->string("address")->nullable(true);
+            $table->string("tel")->nullable(true);
+            $table->string("email");
+            $table->string("position");
+            $table->string("matricID")->nullable(true);
+            $table->string("companyName")->nullable(true);
+            $table->string("companyAdd")->nullable(true);
+            $table->string("companyTel")->nullable(true);
+            $table->string("companySV")->nullable(true);
+            $table->string("emailSV")->nullable(true);
+            $table->string("image")->nullable(true);
+            $table->string("password");
             $table->rememberToken();
             $table->timestamps();
         });
@@ -40,6 +40,6 @@ class CreateUsersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists("users");
     }
 }

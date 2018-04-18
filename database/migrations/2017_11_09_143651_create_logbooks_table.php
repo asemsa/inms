@@ -13,15 +13,15 @@ class CreateLogbooksTable extends Migration
      */
     public function up()
     {
-        Schema::create('logbooks', function (Blueprint $table) {
-            $table->increments('id')->unique();
-            $table->integer('studentID');
-            $table->dateTime('date');
-            $table->string('objective')->nullable(true);
-            $table->string('task')->nullable(true);;
-            $table->string('newknowledge')->nullable(true);
-            $table->string('attachment')->nullable(true);
-            $table->tinyInteger('publish');
+        Schema::create("logbooks", function (Blueprint $table) {
+            $table->increments("id")->unique();
+            $table->integer("studentID");
+            $table->dateTime("date");
+            $table->string("objective")->nullable(true);
+            $table->string("task")->nullable(true);;
+            $table->string("newknowledge")->nullable(true);
+            $table->string("attachment")->nullable(true);
+            $table->tinyInteger("publish");
             $table->timestamps();
         });
     }
@@ -33,6 +33,6 @@ class CreateLogbooksTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('logbooks');
+        Schema::dropIfExists("logbooks");
     }
 }

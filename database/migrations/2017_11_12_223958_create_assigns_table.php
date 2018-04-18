@@ -13,10 +13,10 @@ class CreateAssignsTable extends Migration
      */
     public function up()
     {
-        Schema::create('assigns', function (Blueprint $table) {
-            $table->increments('id')->unique();
-            $table->integer('studentID');
-            $table->integer('facultySVID');
+        Schema::create("assigns", function (Blueprint $table) {
+            $table->increments("id")->unique();
+            $table->integer("studentID");
+            $table->integer("facultySVID");
             $table->timestamps();
         });
     }
@@ -28,6 +28,6 @@ class CreateAssignsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('assigns');
+        Schema::dropIfExists("assigns");
     }
 }
