@@ -1,4 +1,4 @@
-/try to change the codes #attemp2
+//try to change the codes #attempt2
 <?php
 
 /**
