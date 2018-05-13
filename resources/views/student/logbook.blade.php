@@ -52,7 +52,7 @@
                 <th>No</th>
                 <th>Day</th>
                 <th>Date</th>
-                <th>Objective</th>
+                <th>Objective(s)</th>
                 <th>Options</th>
               </tr>
             </thead>
