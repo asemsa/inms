@@ -1,15 +1,13 @@
-before_script: cd resources/views
 language: php
+
 php:
-  - '7.0'
-  - hhvm # on Trusty only
-matrix:
-  include:
-    - php: 7.0
-      env: WP_TRAVISCI=travis:phpunit
-    - php: hhvm
-      env: WP_TRAVISCI=travis:phpunit
-allow_failures:
-    - php: 7.0
-    - php: hhvm
-fast_finish: true
+  - 7.0
+
+before_script:
+  - cp .env.travis .env
+  - mysql -e 'create database inms;'
+  - composer self-update
+  - composer install --no-interaction
+
+script:
+  - vendor/bin/phpunit
